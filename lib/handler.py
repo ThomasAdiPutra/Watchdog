@@ -26,7 +26,8 @@ class Handler(FileSystemEventHandler):
         event_type = event.event_type
         event_time = time.strftime('%Y-%m-%d %H:%M:%S')
         csv_file = 'events.csv'
-        if file_name == csv_file:
+        csv_file = os.path.abspath(csv_file)
+        if absolute_path == csv_file:
             return
         try:
             stat = os.stat(event.src_path) if os.path.exists(event.src_path) else None
