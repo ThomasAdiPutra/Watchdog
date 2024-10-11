@@ -21,7 +21,7 @@ class Handler(FileSystemEventHandler):
         print(f"{event.src_path} has been deleted")
 
     def append_to_csv(self, event):
-        absolute_path = event.src_path if hasattr(event, 'src_path') else '-'
+        absolute_path = os.path.abspath(event.src_path) if hasattr(event, 'src_path') else '-'
         file_name = event.src_path.split('/')[-1]
         event_type = event.event_type
         event_time = time.strftime('%Y-%m-%d %H:%M:%S')
