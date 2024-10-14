@@ -42,7 +42,7 @@ class Handler(FileSystemEventHandler):
                     highest_similarity_score = similarity[0]['score'] if similarity else 0
                     similar_with_file = similarity[0]['source'] if similarity else None
             with open(csv_file, 'a') as f:
-                f.write(f"{file_name},{absolute_path},{event.is_directory},{file_size},{event_type},{event_time},{file_owner},{highest_similarity_score},{similar_with_file},\n")
+                f.write(f"{file_name},{absolute_path},{event.is_directory},{file_size},{event_type},{event_time},{file_owner},{highest_similarity_score},{similar_with_file}\n")
         except Exception as e:
             print(f"Error writing to file: {e}")
             
